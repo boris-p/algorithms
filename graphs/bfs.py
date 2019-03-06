@@ -73,7 +73,7 @@ def getMaxDepth(graph):
                     maxIndex = newIndex
                 secondVertex.index = v.index + 1
                 q.push(secondVertex)
-    print('larget index is', maxIndex)
+    print('largest index is', maxIndex)
 
 
 def getShortestPath(graph, lookupVal):
