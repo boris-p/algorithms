@@ -4,7 +4,7 @@ import init
 class Vertex:
     def __init__(self, value):
         self.explored = False
-        self.index = None
+        self.label = None  # for the topological sort
         self.edges = []
         self.value = value
 
@@ -32,28 +32,25 @@ class AdjacencyList:
     def resetExplored(self):
         for v in self.vertices:
             v.explored = False
+            v.label = None
 
 
-# DFS to check if item exists in the graph
-def checkIfItemExists(graph, vertex, lookupValue):
-    # break condition
-    if vertex.value == lookupValue:
-        return True
+# DFS for topologically sorting acyclical connected graphs
+def tolologicalSortOuter(graph):
+    # making this in an array to pass it be reference
+    currentLabel = [len(graph.vertices)]
+    for v in graph.vertices:
+        if v.explored == False:
+            topologiocalSort(v, currentLabel)
+
+
+def topologiocalSort(vertex, label):
     vertex.explored = True
-
     for e in vertex.edges:
         if e.destination.explored == False:
-            # if we found the item return - we don't need to go any further
-            if checkIfItemExists(graph, e.destination, lookupValue) == True:
-                return True
-    return False
-
-
-def outerCheckIfItemExists(graph, vertex, lookupValue):
-    itemExists = checkIfItemExists(graph, graph.vertices[0], lookupValue)
-    message = 'found. nice!' if itemExists else 'sorry, no luck homebro'
-    print('looking for {0}: {1}'.format(lookupValue, message))
-    graph.resetExplored()
+            topologiocalSort(e.destination, label)
+    vertex.label = label[0]
+    label[0] -= 1
 
 
 # vertices indexes
@@ -75,10 +72,18 @@ edges = [[0, 1],
          [3, 5],
          [4, 5],
          ]
+graph = AdjacencyList(vertices, edges)
+tolologicalSortOuter(graph)
 
+
+vertices = [[0, 's'],
+            [1, 'a'],
+            [2, 'b']
+            ]
+edges = [[0, 1],
+         [2, 1]
+         ]
 
 graph = AdjacencyList(vertices, edges)
-
-outerCheckIfItemExists(graph, graph.vertices[0], 'o')
-outerCheckIfItemExists(graph, graph.vertices[0], 's')
-outerCheckIfItemExists(graph, graph.vertices[0], 'should not find value')
+tolologicalSortOuter(graph)
+print(graph)
