@@ -1,6 +1,12 @@
-the goal is to be more deliberate with this repo - using this file to organize and prioritize the progress.
-For now the goal is to focus on the basics for algorithms and ds, and programming quizzes.
+##The goal is to be more deliberate with this repo and use this for documenting 
+as well as implementing algorithms, data structures and programming questions, as well as lecture notes and summaries in one place.
 
-Let's test out images: 
+Using this file to organize and prioritize the progress.
 
-![](.todo_images/b13b87ae.png)
+Tasks by priority: 
+
+- implement quick sort
+- implement merge sort
+- implement a heap ds, interface is more or less in place
+- implement selection sort, using an array and a heap 
+
