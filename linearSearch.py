@@ -10,7 +10,7 @@ def linear_search(l, search):
 
 
 def main():
-    print("linear search")
+    print("linear sort")
     random_list = [6, 1, 5, 2, 7, 3, 87, 32, 8]
     linear_search(random_list[:], 6)
     linear_search(random_list[:], 87)
