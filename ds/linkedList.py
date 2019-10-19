@@ -66,7 +66,3 @@ print ('---------------')
 foundElement = ll.delete('element 3')
 print ('found element: ' + str(foundElement))
 ll.walk()
-
-
-
-

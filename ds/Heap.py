@@ -1,9 +1,16 @@
+
 class Heap:
     def __init__(self):
         print("init")
 
-    def push(self, value):
+    def extractMin(self, value):
         print("placeholder")
 
-    def pop(self):
+    def insert(self, value):
+        print("placeholder")
+
+    def delete(self):
+        print("placeholder")
+
+    def heapify(self):
         print("placeholder")
